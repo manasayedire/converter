@@ -1,25 +1,24 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { lightTheme, Provider } from '@adobe/react-spectrum';
+import { IntlProvider } from 'react-intl';
+import RomanNumeralConveter from './converter';
+
+const locale = 'en-US';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <IntlProvider locale={locale}>
+      <Provider
+        theme={lightTheme}
+        colorScheme="light"
+        breakpoints={{ tablet: 640, desktop: 1024 }}
+        locale={locale}
+      >
+        <RomanNumeralConveter />
+      </Provider>
+    </IntlProvider>
   );
 }
 
