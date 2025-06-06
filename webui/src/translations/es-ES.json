@@ -1,0 +1,10 @@
+{
+  "globe.menu.label": "Cambiar idioma",
+  "heading": "Convertidor de números romanos",
+  "input.label": "Introduce un número",
+  "input.error": "Introduce un número entre 1 y 3999",
+  "output.label": "El número romano es ",
+  "output.loading": "Cargando...",
+  "button.convert": "Convertir",
+  "toast.error": "Algo salió mal. Inténtalo de nuevo más tarde."
+}

@@ -1,8 +1,12 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-frontend/node_modules
-node-server/node_modules
+webserver/node_modules
+webui/node_modules
+
+# test coverage
+webserver/coverage
 
 # misc
 .DS_Store
+.idea

@@ -1,0 +1,10 @@
+{
+  "globe.menu.label": "Change language",
+  "heading": "Roman numeral converter",
+  "input.label": "Enter a number",
+  "input.error": "Enter a number between 1 and 3999",
+  "output.label": "Roman numeral is ",
+  "output.loading": "Loading...",
+  "button.convert": "Convert",
+  "toast.error": "Something went wrong. Try again later."
+}
