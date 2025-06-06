@@ -7,9 +7,9 @@ const cors = require('cors');
 var corsOptions = {
     origin: 'http://localhost:3000',
 }
-app.use(cors(corsOptions));
 
-app.use('/romannumeral', romanNumeralRoutes);
+// Apply CORS only to /romannumeral route
+app.use('/romannumeral', cors(corsOptions), romanNumeralRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 8080;
