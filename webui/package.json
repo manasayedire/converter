@@ -38,6 +38,11 @@
     "**/*": "prettier --write --ignore-unknown",
      "*.{js,jsx,ts,tsx}": "eslint"
   },
+ "husky": {
+    "hooks": {
+      "pre-commit": "echo \"[Husky] pre-commit\""
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
