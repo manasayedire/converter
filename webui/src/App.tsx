@@ -13,7 +13,10 @@ function App() {
       breakpoints={{ tablet: 640, desktop: 1024 }}
       locale={locale}
     >
-      <IntlProvider locale={locale}>
+      <IntlProvider 
+      
+      
+      locale={locale}>
         <Header setLocale={setLocale} />
         <RomanNumeralConveter />
         <ToastContainer />
