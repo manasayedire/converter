@@ -42,8 +42,8 @@ describe('App', () => {
     });
     render(<App />);
     const input = screen.getByTestId('roman-numeral-converter-number');
-    userEvent.clear(input!);
-    userEvent.type(input!, '10');
+    userEvent.clear(input);
+    userEvent.type(input, '10');
     userEvent.click(screen.getByTestId('roman-numeral-converter-button'));
     await waitFor(() => {
       expect(screen.getByTestId('roman-numeral-converter-roman-numeral')).toHaveTextContent('X');
