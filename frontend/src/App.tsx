@@ -1,6 +1,3 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import { lightTheme, Provider } from '@adobe/react-spectrum';
 import { IntlProvider } from 'react-intl';
 import RomanNumeralConveter from './converter';
