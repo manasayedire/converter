@@ -1,0 +1,6 @@
+{
+  "heading": "Roman numeral converter",
+  "input.label": "Enter a number",
+  "output.label": "Roman numeral is ",
+  "button.convert": "Convert"
+}

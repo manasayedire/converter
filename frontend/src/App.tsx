@@ -1,21 +1,23 @@
+import { useState } from 'react';
 import { lightTheme, Provider } from '@adobe/react-spectrum';
 import { IntlProvider } from 'react-intl';
-import RomanNumeralConveter from './converter';
-
-const locale = 'en-US';
+import RomanNumeralConveter from './components/RomanNumeralConveter';
+import Header from './components/Header';
 
 function App() {
+  const [locale, setLocale] = useState('en-US');
+
   return (
-    <IntlProvider locale={locale}>
-      <Provider
-        theme={lightTheme}
-        colorScheme="light"
-        breakpoints={{ tablet: 640, desktop: 1024 }}
-        locale={locale}
-      >
+    <Provider
+      theme={lightTheme}
+      breakpoints={{ tablet: 640, desktop: 1024 }}
+      locale={locale}
+    >
+      <IntlProvider locale={locale}>
+        <Header setLocale={setLocale} />
         <RomanNumeralConveter />
-      </Provider>
-    </IntlProvider>
+      </IntlProvider>
+    </Provider>
   );
 }
 
