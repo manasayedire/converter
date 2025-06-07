@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import RomanNumeralConveter from './RomanNumeralConveter';
+import RomanNumeralConveter from './RomanNumeralConverter';
 import { lightTheme, Provider, ToastQueue } from '@adobe/react-spectrum';
 import * as useRomanNumeralHook from '../hooks/useRomanNumeral';
 

@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./webserver/backend.Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - FRONTEND_ORIGIN=http://localhost:3000
+    volumes:
+      - ./webserver/logs:/app/logs
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./webui/frontend.Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend 

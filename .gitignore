@@ -7,6 +7,9 @@ webui/node_modules
 # test coverage
 webserver/coverage
 
+#logs
+webserver/logs
+
 # misc
 .DS_Store
 .idea

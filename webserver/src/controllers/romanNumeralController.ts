@@ -1,22 +1,28 @@
-import { convertToRoman } from '../utils/utils';
+import { convertToRoman } from '../utils/helpers';
 import { Request, Response, NextFunction } from 'express';
+import { RomanNumeralResponse, RomanNumeralError } from '../types/romanNumeral';
+const logger = require('../utils/logger');
 
 const getRomanNumeral = (req: Request, res: Response, next: NextFunction) => {
   if (!req.accepts('json')) {
-    return res.status(406).json({
-      status: '406',
+    const error: RomanNumeralError = {
+      code: '406',
       error: 'NOT_ACCEPTABLE',
       message: 'API only supports application/json responses.',
-    });
+    };
+    logger.error(error);
+    return res.status(406).json(error);
   }
 
   try {
     if (!req.query.query) {
-      return res.status(400).json({
-        status: '400',
+      const error: RomanNumeralError = {
+        code: '400',
         error: 'MISSING_QUERY_PARAM',
         message: 'Required query param is missing.',
-      });
+      };
+      logger.error(error);
+      return res.status(400).json(error);
     }
     const number: number = parseInt(req.query.query as string);
     if (
@@ -25,22 +31,29 @@ const getRomanNumeral = (req: Request, res: Response, next: NextFunction) => {
       number > 3999 ||
       !Number.isInteger(Number(req.query.query))
     ) {
-      return res.status(400).json({
-        status: '400',
+      const error: RomanNumeralError = {
+        code: '400',
         error: 'INVALID_QUERY_VALUE',
         message: 'Please provide a whole number between 1 and 3999.',
-      });
+      };
+      logger.error(error);
+      return res.status(400).json(error);
     }
 
     const romanNumeral = convertToRoman(number);
-
-    res.json({ input: number.toString(), output: romanNumeral });
+    
+    const response: RomanNumeralResponse = { input: number.toString(), output: romanNumeral };
+    logger.info(response);
+    return res.status(200).json(response);
   } catch (err) {
-    return res.status(500).json({
-      status: '500',
+    const error: RomanNumeralError = {
+      code: '500',
       error: 'MISC_SERVER_ERROR',
+      errorDetail: err,
       message: 'Some miscellaneous error has occurred.',
-    });
+    };
+    logger.error(error);
+    return res.status(500).json(error);
   }
 };
 

@@ -13,7 +13,7 @@ import { useRomanNumeral } from '../hooks/useRomanNumeral';
 
 function RomanNumeralConveter() {
   const [number, setNumber] = useState<number | undefined>(undefined);
-  const [romanNumeral, setRomanNumeral] = useState('-');
+  const [romanNumeral, setRomanNumeral] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<boolean>(false);
   const { formatMessage } = useTranslations();
@@ -32,6 +32,7 @@ function RomanNumeralConveter() {
       setLoading(false);
     } catch (err) {
       setLoading(false);
+      console.error(err);
       ToastQueue.negative(formatMessage.format('toast.error'), {timeout: 3000});
     }
   };
@@ -60,7 +61,7 @@ function RomanNumeralConveter() {
           marginY="size-150"
           label={formatMessage.format('output.label')}
           labelPosition="side"
-          value={loading ? 'Loading...' : romanNumeral}
+          value={loading ? 'Loading...' : romanNumeral || '-'}
         />
         <Button data-testid="roman-numeral-converter-button" marginY="size-200" variant="primary" onPress={onConvert}>
           {formatMessage.format('button.convert')}

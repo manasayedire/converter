@@ -1,4 +1,4 @@
-import { convertToRoman } from './utils';
+import { convertToRoman } from './helpers';
 
 describe('convertToRoman', () => {
   xit('converts 1 to I', () => {

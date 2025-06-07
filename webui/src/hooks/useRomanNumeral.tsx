@@ -1,9 +1,10 @@
 import { useCallback } from 'react';
 
 export function useRomanNumeral() {
+  const baseUrl = process.env.REACT_APP_API_URL;
   const convert = useCallback(async (number: number) => {
       const response = await fetch(
-        `http://localhost:8080/romannumeral?query=${number}`,
+        `${baseUrl}/romannumeral?query=${number}`,
       );
       // Error logging
       const data = await response.json();
