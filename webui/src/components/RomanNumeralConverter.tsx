@@ -20,7 +20,12 @@ function RomanNumeralConveter() {
   const { convert } = useRomanNumeral();
 
   const onConvert = async () => {
-    if (number === undefined || number < 1 || number > 3999) {
+    if (
+      number === undefined ||
+      number < 1 ||
+      number > 3999 ||
+      number % 1 !== 0
+    ) {
       setError(true);
       return;
     }
@@ -29,18 +34,21 @@ function RomanNumeralConveter() {
     try {
       const result = await convert(number);
       setRomanNumeral(result);
-      setLoading(false);
     } catch (err) {
+      ToastQueue.negative(formatMessage.format('toast.error'), {
+        timeout: 3000,
+      });
+    } finally {
       setLoading(false);
-      console.error(err);
-      ToastQueue.negative(formatMessage.format('toast.error'), {timeout: 3000});
     }
   };
 
   return (
     <Flex direction="column" justifyContent="center" alignItems="center">
       <Flex direction="column" margin="size-200" width="308px">
-        <Heading data-testid="roman-numeral-converter-heading" level={2}>{formatMessage.format('heading')}</Heading>
+        <Heading data-testid="roman-numeral-converter-heading" level={2}>
+          {formatMessage.format('heading')}
+        </Heading>
         <Divider size="S" />
         <NumberField
           data-testid="roman-numeral-converter-number"
@@ -49,6 +57,7 @@ function RomanNumeralConveter() {
           height="size-400"
           label={formatMessage.format('input.label')}
           labelPosition="side"
+          defaultValue={number}
           value={number}
           onChange={setNumber}
           validationState={error ? 'invalid' : undefined}
@@ -63,7 +72,12 @@ function RomanNumeralConveter() {
           labelPosition="side"
           value={loading ? 'Loading...' : romanNumeral || '-'}
         />
-        <Button data-testid="roman-numeral-converter-button" marginY="size-200" variant="primary" onPress={onConvert}>
+        <Button
+          data-testid="roman-numeral-converter-button"
+          marginY="size-200"
+          variant="primary"
+          onPress={onConvert}
+        >
           {formatMessage.format('button.convert')}
         </Button>
       </Flex>

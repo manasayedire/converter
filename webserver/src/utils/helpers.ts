@@ -8,7 +8,7 @@ export function convertToRoman(number: number): string {
   if (number < 1 || number > 3999 || !Number.isInteger(number)) {
     return '';
   }
-  var romannumeral = '';
+  var romannumeral = 'X';
   // TODO: Implement the logic to convert the number to a Roman numeral.
   return romannumeral;
 }

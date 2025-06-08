@@ -8,4 +8,4 @@ export type RomanNumeralError = {
   error: string;
   message: string;
   errorDetail?: unknown;
-}; 
+};

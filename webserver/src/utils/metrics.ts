@@ -13,11 +13,14 @@ client.collectDefaultMetrics({
  * @param app The Express app instance
  */
 function setupMetricsEndpoint(app: Application) {
-  app.get('/metrics', async (req: Request, res: Response, next: NextFunction) => {
-    res.setHeader('Content-type', register.contentType);
-    res.send(await register.metrics());
-    if (next) next();
-  });
+  app.get(
+    '/metrics',
+    async (req: Request, res: Response, next: NextFunction) => {
+      res.setHeader('Content-type', register.contentType);
+      res.send(await register.metrics());
+      if (next) next();
+    },
+  );
 }
 
-export { register, setupMetricsEndpoint }; 
+export { register, setupMetricsEndpoint };

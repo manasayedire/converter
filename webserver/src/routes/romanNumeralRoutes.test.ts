@@ -1,14 +1,20 @@
 import express from 'express';
+import romanNumeralController from '../controllers/romanNumeralController';
+import romanNumeralRoutes from './romanNumeralRoutes';
+import request from 'supertest';
 
+// Mock romanNumeralController
 jest.mock('../controllers/romanNumeralController', () => ({
   getRomanNumeral: jest.fn((req, res) =>
     res.status(200).json({ mocked: true }),
   ),
 }));
-import romanNumeralController from '../controllers/romanNumeralController';
-import romanNumeralRoutes from './romanNumeralRoutes';
-import request from 'supertest';
 
+/*
+ * Unit Test cases for romanNumeralRoutes
+ * Calls the controller when GET /romannumeral is hit
+ * Does not allow POST, PUT, DELETE, PATCH methods
+ */
 describe('romanNumeralRoutes', () => {
   let app: express.Application;
   beforeAll(() => {
@@ -20,6 +26,7 @@ describe('romanNumeralRoutes', () => {
     await request(app)
       .get('/romannumeral?query=1')
       .set('Accept', 'application/json');
+    // Check if the controller is called
     expect(romanNumeralController.getRomanNumeral).toHaveBeenCalled();
   });
 
@@ -29,6 +36,7 @@ describe('romanNumeralRoutes', () => {
       const res = await (request(app) as any)
         [method]('/romannumeral?query=1')
         .set('Accept', 'application/json');
+      // Check if the method is not allowed
       expect(res.statusCode).toBe(405);
     }
   });

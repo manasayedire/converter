@@ -9,6 +9,7 @@ services:
     environment:
       - NODE_ENV=production
       - FRONTEND_ORIGIN=http://localhost:3000
+      - CHROMATIC = false
     volumes:
       - ./webserver/logs:/app/logs
 

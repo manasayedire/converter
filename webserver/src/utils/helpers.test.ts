@@ -1,5 +1,14 @@
 import { convertToRoman } from './helpers';
 
+/*
+ * Unit Test cases for convertToRoman function
+ * Converts 1 to I
+ * Converts 4 to IV
+ * Converts 9 to IX
+ * Converts 58 to LVIII
+ * Converts 1994 to MCMXCIV
+ * Converts 3999 to MMMCMXCIX
+ */
 describe('convertToRoman', () => {
   xit('converts 1 to I', () => {
     expect(convertToRoman(1)).toBe('I');

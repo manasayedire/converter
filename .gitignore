@@ -13,3 +13,11 @@ webserver/logs
 # misc
 .DS_Store
 .idea
+
+#playwright
+# Playwright
+e2eTests/node_modules/
+e2eTests/test-results/
+e2eTests/playwright-report/
+e2eTests/blob-report/
+e2eTests/playwright/.cache/

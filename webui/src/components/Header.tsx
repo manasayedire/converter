@@ -14,16 +14,20 @@ export interface HeaderProps {
 
 function Header(props: HeaderProps) {
   const { formatMessage } = useTranslations();
-  
+
   return (
     <Flex direction="row" justifyContent="end">
       <MenuTrigger>
-        <ActionButton data-testid="header-change-language-button" aria-label={formatMessage.format('globe.menu.label')} isQuiet>
+        <ActionButton
+          data-testid="header-change-language-button"
+          aria-label={formatMessage.format('globe.menu.label')}
+          isQuiet
+        >
           <GlobeGrid />
         </ActionButton>
         <Menu onAction={(key) => props.setLocale(key as string)}>
           <Item key="en-US">English</Item>
-          <Item key="es-ES">Spanish</Item>
+          <Item key="es-ES">Español</Item>
         </Menu>
       </MenuTrigger>
     </Flex>
