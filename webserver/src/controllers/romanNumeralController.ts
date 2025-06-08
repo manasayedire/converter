@@ -1,9 +1,17 @@
 import { convertToRoman } from '../utils/helpers';
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import { RomanNumeralResponse, RomanNumeralError } from '../types/romanNumeral';
-const logger = require('../utils/logger');
+import logger from '../utils/logger';
 
-const getRomanNumeral = (req: Request, res: Response, next: NextFunction) => {
+/*
+ * Returns the roman numeral for the given number
+ * @param req - The request object
+ * @param res - The response object
+ * @param next - The next function
+ * @returns The roman numeral for the given number
+ */
+const getRomanNumeral = (req: Request, res: Response) => {
+  // Validate: Accept header must be application/json
   if (!req.accepts('json')) {
     const notAcceptableError: RomanNumeralError = {
       code: '406',
@@ -15,6 +23,7 @@ const getRomanNumeral = (req: Request, res: Response, next: NextFunction) => {
   }
 
   try {
+    // Validate: query param is present
     if (!req.query.query) {
       const missingQueryParamError: RomanNumeralError = {
         code: '400',
@@ -42,8 +51,10 @@ const getRomanNumeral = (req: Request, res: Response, next: NextFunction) => {
       return res.status(400).json(invalidQueryError);
     }
 
+    // Convert the number to a roman numeral
     const romanNumeral = convertToRoman(number);
 
+    // Return the roman numeral
     const response: RomanNumeralResponse = {
       input: number.toString(),
       output: romanNumeral,
@@ -51,6 +62,7 @@ const getRomanNumeral = (req: Request, res: Response, next: NextFunction) => {
     logger.info(response);
     return res.status(200).json(response);
   } catch (err) {
+    // Return 500 error if there is an error
     const error: RomanNumeralError = {
       code: '500',
       error: 'MISC_SERVER_ERROR',

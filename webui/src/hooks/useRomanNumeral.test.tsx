@@ -22,9 +22,7 @@ describe('useRomanNumeral', () => {
 
     const { result } = renderHook(() => useRomanNumeral());
     const output = await result.current.convert(10);
-    expect(global.fetch).toHaveBeenCalledWith(
-      'http://localhost:8080/romannumeral?query=10',
-    );
+    expect(global.fetch).toHaveBeenCalledWith('http://localhost:8080/romannumeral?query=10');
     expect(output).toBe('X');
   });
 

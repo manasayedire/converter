@@ -4,7 +4,7 @@ import romanNumeralRoutes from './routes/romanNumeralRoutes';
 const app = express();
 
 // Allow requests only from 3000 port
-var corsOptions = {
+const corsOptions = {
   origin: 'http://localhost:3000',
 };
 

@@ -18,19 +18,11 @@ describe('App', () => {
   it('renders main UI elements', () => {
     render(<App />);
     // Header button
-    expect(
-      screen.getByTestId('header-change-language-button'),
-    ).toBeInTheDocument();
+    expect(screen.getByTestId('header-change-language-button')).toBeInTheDocument();
     // Converter heading, input, and button
-    expect(
-      screen.getByTestId('roman-numeral-converter-heading'),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByTestId('roman-numeral-converter-number'),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByTestId('roman-numeral-converter-button'),
-    ).toBeInTheDocument();
+    expect(screen.getByTestId('roman-numeral-converter-heading')).toBeInTheDocument();
+    expect(screen.getByTestId('roman-numeral-converter-number')).toBeInTheDocument();
+    expect(screen.getByTestId('roman-numeral-converter-button')).toBeInTheDocument();
   });
 
   it('switches language when a new language is selected', async () => {
@@ -41,17 +33,15 @@ describe('App', () => {
     await userEvent.click(screen.getByText('Español'));
     // Heading should update to Spanish
     await waitFor(() => {
-      expect(
-        screen.getByTestId('roman-numeral-converter-heading'),
-      ).toHaveTextContent(/convertidor de números romanos/i);
+      expect(screen.getByTestId('roman-numeral-converter-heading')).toHaveTextContent(
+        /convertidor de números romanos/i,
+      );
     });
     // Switch back to English
     await userEvent.click(screen.getByTestId('header-change-language-button'));
     await userEvent.click(screen.getByText('English'));
     await waitFor(() => {
-      expect(
-        screen.getByTestId('roman-numeral-converter-heading'),
-      ).toHaveTextContent(/roman numeral converter/i);
+      expect(screen.getByTestId('roman-numeral-converter-heading')).toHaveTextContent(/roman numeral converter/i);
     });
   });
 
@@ -67,9 +57,7 @@ describe('App', () => {
     await userEvent.type(input, '10');
     await userEvent.click(screen.getByTestId('roman-numeral-converter-button'));
     await waitFor(() => {
-      expect(
-        screen.getByTestId('roman-numeral-converter-roman-numeral'),
-      ).toHaveTextContent('X');
+      expect(screen.getByTestId('roman-numeral-converter-roman-numeral')).toHaveTextContent('X');
     });
   });
 });

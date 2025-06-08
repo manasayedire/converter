@@ -2,13 +2,28 @@
   "name": "e2etests",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test",
+    "test:watch": "playwright test --watch",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:coverage": "playwright test --coverage",
+    "test:report": "playwright show-report",
+    "format": "prettier --write .",
+    "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "eslint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@eslint/js": "^9.28.0",
     "@playwright/test": "^1.52.0",
-    "@types/node": "^22.15.30"
+    "@types/node": "^22.15.30",
+    "eslint": "^9.28.0",
+    "prettier": "3.5.3",
+    "typescript-eslint": "^8.33.1"
   }
 }

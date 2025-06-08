@@ -7,6 +7,7 @@ import { lightTheme } from '@adobe/react-spectrum';
 import { Provider } from '@adobe/react-spectrum';
 
 const setLocale = vi.fn();
+// Helper function to render the Header component
 const makeComponent = () => {
   return render(
     <Provider theme={lightTheme}>
@@ -15,12 +16,16 @@ const makeComponent = () => {
   );
 };
 
+/*
+ * Unit Test cases for Header component
+ * Renders the ActionButton with GlobeGrid icon
+ * Opens the menu when ActionButton is clicked
+ * Calls setLocale with the correct locale when a menu item is selected
+ */
 describe('Header', () => {
   it('renders the ActionButton with GlobeGrid icon', () => {
     makeComponent();
-    expect(
-      screen.getByTestId('header-change-language-button'),
-    ).toBeInTheDocument();
+    expect(screen.getByTestId('header-change-language-button')).toBeInTheDocument();
   });
 
   it('opens the menu when ActionButton is clicked', async () => {

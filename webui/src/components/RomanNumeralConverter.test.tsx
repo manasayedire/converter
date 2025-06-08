@@ -8,7 +8,7 @@ import * as useRomanNumeralHook from '../hooks/useRomanNumeral';
 
 // Mock Spectrum ToastQueue
 vi.mock('@adobe/react-spectrum', async () => {
-  const original = await vi.importActual<any>('@adobe/react-spectrum');
+  const original = await vi.importActual<typeof import('@adobe/react-spectrum')>('@adobe/react-spectrum');
   return {
     ...original,
     ToastQueue: {
@@ -52,29 +52,21 @@ describe('RomanNumeralConveter', () => {
     vi.restoreAllMocks();
   });
 
-  it('renders heading and input', () => {
+  it('renders heading and input', async () => {
     makeComponent();
-    expect(
-      screen.getByTestId('roman-numeral-converter-heading'),
-    ).toBeInTheDocument();
+    expect(screen.getByTestId('roman-numeral-converter-heading')).toBeInTheDocument();
     expect(screen.getByText('Enter a number')).toBeInTheDocument();
-    expect(
-      screen.getByTestId('roman-numeral-converter-number'),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByTestId('roman-numeral-converter-roman-numeral'),
-    ).toHaveTextContent('Roman numeral is -'),
-      expect(
-        screen.getByTestId('roman-numeral-converter-button'),
-      ).toBeInTheDocument();
+    expect(screen.getByTestId('roman-numeral-converter-number')).toBeInTheDocument();
+    await waitFor(() =>
+      expect(screen.getByTestId('roman-numeral-converter-roman-numeral')).toHaveTextContent('Roman numeral is -'),
+    );
+    expect(screen.getByTestId('roman-numeral-converter-button')).toBeInTheDocument();
   });
 
   it('shows error for invalid input (empty)', async () => {
     makeComponent();
     await userEvent.click(screen.getByTestId('roman-numeral-converter-button'));
-    expect(
-      screen.getByText('Enter a number between 1 and 3999'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('Enter a number between 1 and 3999')).toBeInTheDocument();
   });
 
   it('shows error for invalid input (out of range)', async () => {
@@ -84,22 +76,14 @@ describe('RomanNumeralConveter', () => {
     //show error for invalid input 0
     await userEvent.type(input, '0');
     await userEvent.click(screen.getByTestId('roman-numeral-converter-button'));
-    expect(
-      screen.getByTestId('roman-numeral-converter-number'),
-    ).toHaveAttribute('aria-invalid', 'true');
-    expect(
-      screen.getByText('Enter a number between 1 and 3999'),
-    ).toBeInTheDocument();
+    expect(screen.getByTestId('roman-numeral-converter-number')).toHaveAttribute('aria-invalid', 'true');
+    expect(screen.getByText('Enter a number between 1 and 3999')).toBeInTheDocument();
     await userEvent.clear(input);
     // show error for invalid input 4000
     await userEvent.type(input, '4000');
     await userEvent.click(screen.getByTestId('roman-numeral-converter-button'));
-    expect(
-      screen.getByTestId('roman-numeral-converter-number'),
-    ).toHaveAttribute('aria-invalid', 'true');
-    expect(
-      screen.getByText('Enter a number between 1 and 3999'),
-    ).toBeInTheDocument();
+    expect(screen.getByTestId('roman-numeral-converter-number')).toHaveAttribute('aria-invalid', 'true');
+    expect(screen.getByText('Enter a number between 1 and 3999')).toBeInTheDocument();
   });
 
   it('converts number to roman numeral on valid input', async () => {
@@ -114,14 +98,16 @@ describe('RomanNumeralConveter', () => {
     await userEvent.click(screen.getByTestId('roman-numeral-converter-button'));
     // check if the roman numeral is displayed
     await waitFor(() =>
-      expect(
-        screen.getByTestId('roman-numeral-converter-roman-numeral'),
-      ).toHaveTextContent('Roman numeral is X'),
+      expect(screen.getByTestId('roman-numeral-converter-roman-numeral')).toHaveTextContent('Roman numeral is X'),
     );
   });
 
   it('shows loading state while converting', async () => {
-    let resolveFetch: (value: any) => void = () => {};
+    type MockFetchResponse = {
+      ok: boolean;
+      json: () => Promise<{ output: string }>;
+    };
+    let resolveFetch: (value: MockFetchResponse) => void = () => {};
     global.fetch = vi.fn().mockImplementation(
       () =>
         new Promise((resolve) => {
@@ -134,14 +120,12 @@ describe('RomanNumeralConveter', () => {
     await userEvent.type(input, '10');
     await userEvent.click(screen.getByTestId('roman-numeral-converter-button'));
     // check if the loading state is displayed
-    expect(
-      screen.getByTestId('roman-numeral-converter-roman-numeral'),
-    ).toHaveTextContent('Roman numeral is Loading...');
+    expect(screen.getByTestId('roman-numeral-converter-roman-numeral')).toHaveTextContent(
+      'Roman numeral is Loading...',
+    );
     resolveFetch({ ok: true, json: async () => ({ output: 'X' }) });
     await waitFor(() =>
-      expect(
-        screen.getByTestId('roman-numeral-converter-roman-numeral'),
-      ).toHaveTextContent('Roman numeral is X'),
+      expect(screen.getByTestId('roman-numeral-converter-roman-numeral')).toHaveTextContent('Roman numeral is X'),
     );
   });
 
@@ -154,10 +138,7 @@ describe('RomanNumeralConveter', () => {
     await userEvent.click(screen.getByTestId('roman-numeral-converter-button'));
     // check if the error toast is displayed
     await waitFor(() => {
-      expect(ToastQueue.negative).toHaveBeenCalledWith(
-        'Something went wrong. Try again later.',
-        { timeout: 3000 },
-      );
+      expect(ToastQueue.negative).toHaveBeenCalledWith('Something went wrong. Try again later.', { timeout: 3000 });
     });
   });
 

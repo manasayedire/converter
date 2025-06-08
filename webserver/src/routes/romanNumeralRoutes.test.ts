@@ -5,9 +5,7 @@ import request from 'supertest';
 
 // Mock romanNumeralController
 jest.mock('../controllers/romanNumeralController', () => ({
-  getRomanNumeral: jest.fn((req, res) =>
-    res.status(200).json({ mocked: true }),
-  ),
+  getRomanNumeral: jest.fn((req, res) => res.status(200).json({ mocked: true })),
 }));
 
 /*
@@ -22,22 +20,34 @@ describe('romanNumeralRoutes', () => {
     app.use('/romannumeral', romanNumeralRoutes);
   });
 
+  const expectMethodNotAllowed = (res: request.Response) => {
+    expect(res.statusCode).toBe(405);
+    expect(res.text).toBe('Method Not Allowed');
+  };
+
   it('should call the controller when GET /romannumeral is hit', async () => {
-    await request(app)
-      .get('/romannumeral?query=1')
-      .set('Accept', 'application/json');
+    await request(app).get('/romannumeral?query=1').set('Accept', 'application/json');
     // Check if the controller is called
     expect(romanNumeralController.getRomanNumeral).toHaveBeenCalled();
   });
 
-  it('should not allow POST, PUT, DELETE, PATCH methods', async () => {
-    const methods = ['post', 'put', 'delete', 'patch'];
-    for (const method of methods) {
-      const res = await (request(app) as any)
-        [method]('/romannumeral?query=1')
-        .set('Accept', 'application/json');
-      // Check if the method is not allowed
-      expect(res.statusCode).toBe(405);
-    }
+  it('should not allow POST method', async () => {
+    const res = await request(app).post('/romannumeral?query=1').set('Accept', 'application/json');
+    expectMethodNotAllowed(res);
+  });
+
+  it('should not allow PUT method', async () => {
+    const res = await request(app).put('/romannumeral?query=1').set('Accept', 'application/json');
+    expectMethodNotAllowed(res);
+  });
+
+  it('should not allow DELETE method', async () => {
+    const res = await request(app).delete('/romannumeral?query=1').set('Accept', 'application/json');
+    expectMethodNotAllowed(res);
+  });
+
+  it('should not allow PATCH method', async () => {
+    const res = await request(app).patch('/romannumeral?query=1').set('Accept', 'application/json');
+    expectMethodNotAllowed(res);
   });
 });

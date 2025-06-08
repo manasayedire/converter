@@ -4,9 +4,7 @@ import romanNumeralController from '../controllers/romanNumeralController';
 
 const router = express.Router();
 
-router
-  .route('/')
-  .all(allowMethods('GET'))
-  .get(romanNumeralController.getRomanNumeral);
+// Allow only GET method. Calls the controller when GET /romannumeral is hit
+router.route('/').all(allowMethods('GET')).get(romanNumeralController.getRomanNumeral);
 
 export default router;

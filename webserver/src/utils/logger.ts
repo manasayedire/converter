@@ -1,6 +1,13 @@
-const { createLogger, format, transports } = require('winston');
-const DailyRotateFile = require('winston-daily-rotate-file');
+import { createLogger, format, transports } from 'winston';
+import DailyRotateFile from 'winston-daily-rotate-file';
 
+/*
+ * Winston logger for the roman numeral converter
+ * @param level - The log level
+ * @param format - The log format
+ * @param transports - The log transports
+ * @returns The logger
+ */
 const logger = createLogger({
   level: 'info',
   format: format.combine(format.timestamp(), format.json()),
@@ -16,4 +23,4 @@ const logger = createLogger({
     }),
   ],
 });
-module.exports = logger;
+export default logger;

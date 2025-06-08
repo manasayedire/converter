@@ -1,6 +1,7 @@
 import request from 'supertest';
 import express from 'express';
 import romanNumeralRoutes from '../routes/romanNumeralRoutes';
+import { convertToRoman } from '../utils/helpers';
 
 // Mock convertToRoman function
 jest.mock('../utils/helpers', () => ({
@@ -27,9 +28,7 @@ describe('GET /romannumeral', () => {
   });
 
   it('should return roman numeral for valid input', async () => {
-    const res = await request(app)
-      .get('/romannumeral?query=10')
-      .set('Accept', 'application/json');
+    const res = await request(app).get('/romannumeral?query=10').set('Accept', 'application/json');
     expect(res.statusCode).toBe(200);
     expect(res.body).toEqual({ input: '10', output: 'X' });
   });
@@ -71,16 +70,14 @@ describe('GET /romannumeral', () => {
   });
 
   it('should return 406 if Accept header is not application/json', async () => {
-    const res = await request(app)
-      .get('/romannumeral?query=10')
-      .set('Accept', 'text/html');
+    const res = await request(app).get('/romannumeral?query=10').set('Accept', 'text/html');
     expect(res.statusCode).toBe(406);
     expect(res.body.error).toBe('NOT_ACCEPTABLE');
   });
 
   it('should return 500 for MISC_SERVER_ERROR if convertToRoman throws an error', async () => {
-    const { convertToRoman } = require('../utils/helpers');
-    convertToRoman.mockImplementationOnce(() => {
+    // Mock convertToRoman function to throw an error
+    (convertToRoman as jest.Mock).mockImplementationOnce(() => {
       throw new Error('fail');
     });
     const res = await request(app).get('/romannumeral?query=10');

@@ -1,18 +1,18 @@
 import { test, expect } from '@playwright/test';
 
 /*
-* End to end Test cases for roman numeral converter
-* Empty input
-* Number 10
-* Number 4000
-* Number 0
-* Decimal number
-* Backend error 500
-* Localization
-*/
+ * End to end Test cases for roman numeral converter
+ * Empty input
+ * Number 10
+ * Number 4000
+ * Number 0
+ * Decimal number
+ * Backend error 500
+ * Localization
+ */
 test.beforeEach(async ({ page }) => {
   // Navigate to the roman numeral converter page
-  await page.goto('http://localhost:3000');
+  await page.goto('/');
 });
 
 test('test roman numeral converter for empty input', async ({ page }) => {
@@ -64,14 +64,14 @@ test('test roman numeral converter for decimal number', async ({ page }) => {
 });
 
 test('test roman numeral converter for backend error 500', async ({ page }) => {
-  await page.route("http://localhost:8080/romannumeral?query=10", (route, request) => {
+  await page.route('http://localhost:8080/romannumeral?query=10', (route) => {
     route.fulfill({
       status: 500, // Internal Server Error
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         code: '500',
         error: 'MISC_SERVER_ERROR',
         errorDetail: 'Some miscellaneous error has occurred.',
-        message: 'Some miscellaneous error has occurred.', 
+        message: 'Some miscellaneous error has occurred.',
       }),
     });
   });
@@ -104,14 +104,14 @@ test('test roman numeral converter for backend error 500 for localization', asyn
   await expect(page.getByTestId('header-change-language-button')).toBeVisible();
   await page.getByTestId('header-change-language-button').click();
   await page.getByText('Español').click();
-  await page.route("http://localhost:8080/romannumeral?query=10", (route, request) => {
+  await page.route('http://localhost:8080/romannumeral?query=10', (route) => {
     route.fulfill({
       status: 500, // Internal Server Error
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         code: '500',
         error: 'MISC_SERVER_ERROR',
         errorDetail: 'Some miscellaneous error has occurred.',
-        message: 'Some miscellaneous error has occurred.', 
+        message: 'Some miscellaneous error has occurred.',
       }),
     });
   });

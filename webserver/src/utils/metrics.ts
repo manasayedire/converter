@@ -1,5 +1,5 @@
 import { Application, Request, Response, NextFunction } from 'express';
-const client = require('prom-client');
+import client from 'prom-client';
 
 // REGISTERS A NEW PROMETHEUS CLIENT
 const register = new client.Registry();
@@ -13,14 +13,11 @@ client.collectDefaultMetrics({
  * @param app The Express app instance
  */
 function setupMetricsEndpoint(app: Application) {
-  app.get(
-    '/metrics',
-    async (req: Request, res: Response, next: NextFunction) => {
-      res.setHeader('Content-type', register.contentType);
-      res.send(await register.metrics());
-      if (next) next();
-    },
-  );
+  app.get('/metrics', async (req: Request, res: Response, next: NextFunction) => {
+    res.setHeader('Content-type', register.contentType);
+    res.send(await register.metrics());
+    if (next) next();
+  });
 }
 
 export { register, setupMetricsEndpoint };
