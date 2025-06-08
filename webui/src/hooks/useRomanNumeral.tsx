@@ -5,6 +5,11 @@
 export function useRomanNumeral() {
   const baseUrl = import.meta.env.VITE_API_URL;
 
+  /*
+   * Converts the number to a roman numeral
+   * @param number - The number to convert to a roman numeral
+   * @returns The roman numeral representation of the number
+   */
   const convert = async (number: number) => {
     try {
       // Calls the API to convert the number to a roman numeral

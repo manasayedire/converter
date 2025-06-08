@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { lightTheme, Provider, ToastContainer } from '@adobe/react-spectrum';
+import { defaultTheme, Provider, ToastContainer } from '@adobe/react-spectrum';
 import { IntlProvider } from 'react-intl';
 import RomanNumeralConveter from './components/RomanNumeralConverter';
 import Header from './components/Header';
@@ -13,7 +13,7 @@ function App() {
    * Renders the Header component and RomanNumeralConverter component
    */
   return (
-    <Provider theme={lightTheme} breakpoints={{ tablet: 640, desktop: 1024 }} locale={locale}>
+    <Provider theme={defaultTheme} locale={locale} height="100%">
       <IntlProvider locale={locale}>
         <Header setLocale={setLocale} />
         <RomanNumeralConveter />

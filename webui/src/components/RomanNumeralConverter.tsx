@@ -71,7 +71,7 @@ function RomanNumeralConveter() {
           labelPosition="side"
           value={loading ? 'Loading...' : romanNumeral || '-'}
         />
-        <Button data-testid="roman-numeral-converter-button" marginY="size-200" variant="primary" onPress={onConvert}>
+        <Button alignSelf="center" data-testid="roman-numeral-converter-button" marginY="size-200" variant="accent" onPress={onConvert}>
           {formatMessage.format('button.convert')}
         </Button>
       </Flex>
