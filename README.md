@@ -1,8 +1,7 @@
 # Roman Numeral Converter
 
-A full-stack web application that allows users to seamlessly convert numbers to Roman numerals, featuring a modern user interface, robust backend logic, and comprehensive end-to-end testing to ensure accuracy and reliability across devices.
+A full-stack web application that offers users convert numbers to Roman numerals, featuring a modern user interface, robust backend logic, and comprehensive end-to-end testing to ensure accuracy and reliability across devices.
 
----
 
 ## Tech Stack
 
@@ -17,22 +16,27 @@ A full-stack web application that allows users to seamlessly convert numbers to 
 | Metrics & Monitoring  | Winston, Prometheus                  |
 | Performance Monitoring| Web Vitals                           |
 
----
+
 ## Reasoning for choosing the stack
 
+**Frontend:**
 - **React:** Selected for its modular component structure, extensive library ecosystem, and active community, making it well-suited for scalable and maintainable modern UIs.
 - **Vite:** Chosen for its fast development server and optimized build process, greatly enhancing developer productivity and reducing build times compared to traditional tools.
 - **Adobe React Spectrum:** Provides accessible, visually consistent, and production-ready UI components, ensuring a polished and standards-compliant user interface.
-- **Node.js & Express:** Node.js delivers a performant, event-driven runtime for server-side JavaScript, while Express offers a minimal, flexible framework for building robust REST APIs efficiently.
-- **Playwright:** Enables comprehensive end-to-end testing across all major browsers and devices, ensuring consistent user experience and application reliability.
-- **Docker & Docker Compose:** Facilitate containerization and orchestration, making development, testing, and deployment consistent and reproducible across different environments.
-- **ESLint & Prettier:** Maintain code quality and consistent formatting, helping to prevent bugs and improve long-term maintainability.
 - **react-intl:** Provides powerful internationalization features, making it straightforward to support multiple languages and locales in the frontend.
 - **Web Vitals:** Integrated to monitor and improve key frontend performance metrics, directly enhancing user experience and SEO.
+
+**Backend:**
+- **Node.js & Express:** Node.js delivers a performant, event-driven runtime for server-side JavaScript, while Express offers a minimal, flexible framework for building robust REST APIs efficiently.
 - **Winston:** Used for structured, configurable backend logging, aiding in effective debugging and monitoring of application events.
 - **Prometheus:** Supports robust metrics collection and monitoring, enabling observability and alerting for backend services.
 
----
+**End-to-end testing:**
+- **Playwright:** Enables comprehensive end-to-end testing across all major browsers and devices, ensuring consistent user experience and application reliability.
+
+**Containerization and Code Quality**
+- **Docker & Docker Compose:** Facilitate containerization and orchestration, making development, testing, and deployment consistent and reproducible across different environments.
+- **ESLint & Prettier:** Maintain code quality and consistent formatting, helping to prevent bugs and improve long-term maintainability.
 
 ## Directory Structure
 
@@ -66,8 +70,6 @@ converter/
 └── README.md
 ```
 
----
-
 ## Getting Started
 
 ### Clone the Repository
@@ -76,8 +78,6 @@ converter/
 git clone https://github.com/manasayedire/converter.git
 cd converter
 ```
-
----
 
 ### Running with Docker
 
@@ -92,8 +92,6 @@ docker-compose exec webserver npm test
 
 - The webserver will be available at [http://localhost:8080](http://localhost:8080)
 - The webui will be available at [http://localhost:3000](http://localhost:3000)
-
----
 
 ### Running Locally (without Docker)
 
@@ -117,8 +115,6 @@ npm start
 npm test
 ```
 
----
-
 ## End-to-End Testing with Playwright
 
 End-to-end (E2E) tests for this project are implemented using [Playwright](https://playwright.dev/). Playwright automates browser interactions to verify that the Roman Numeral Converter App works as expected from the user's perspective.
@@ -133,8 +129,6 @@ npm install
 npm test
 ```
 
----
-
 ## Code Quality
 
 ### Linting and Formatting
@@ -148,8 +142,6 @@ Run the following commands in the respective package directory (e.g., `cd packag
 - **`npm run eslint:fix`** – Lints and auto-fixes code with ESLint.
 
 > **Tip:** Run these commands before committing code to ensure consistent style and catch potential issues early.
-
----
 
 ## Roman Numeral Converter: Development Journey
 **Objective**: Develop a user-friendly and efficient application to convert numbers to Roman numerals, emphasizing modularity, scalability, and maintainability.
