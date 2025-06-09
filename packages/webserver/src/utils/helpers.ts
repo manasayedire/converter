@@ -8,7 +8,7 @@ export function convertToRoman(number: number): string {
   if (number < 1 || number > 3999 || !Number.isInteger(number)) {
     return '';
   }
-  // oman numerals are a numeral system that uses letters to represent numbers.
+  // Roman numerals are a numeral system that uses letters to represent numbers.
   const romanNumerals = [
     { value: 1000, numeral: 'M' },
     { value: 900, numeral: 'CM' },
