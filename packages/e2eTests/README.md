@@ -38,5 +38,3 @@ npm test
 - **`npm run format`** – Formats code with Prettier.
 - **`npm run eslint`** – Lints code with ESLint.
 - **`npm run eslint:fix`** – Lints and auto-fixes code with ESLint.
-
-

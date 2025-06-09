@@ -49,5 +49,3 @@ This server uses [Winston](https://github.com/winstonjs/winston) for logging. Lo
 ## Metrics with Prometheus (prom-client)
 
 The server exposes application metrics using [prom-client](https://github.com/siimon/prom-client), which allows Prometheus to scrape metrics for monitoring. Default and custom metrics (such as HTTP request and response counters) are collected. The `/metrics` endpoint is available for Prometheus to scrape these metrics. Metrics include request counts, response counts, and standard Node.js process metrics, all prefixed with `converter_`.
-
-

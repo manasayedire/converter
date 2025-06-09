@@ -7,7 +7,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./webserver/logs:/app/logs
+      - ./packages/webserver/logs:/app/logs
 
   webui:
     build:
