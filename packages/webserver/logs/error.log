@@ -1,0 +1,40 @@
+{"code":"400","error":"MISSING_QUERY_PARAM","level":"error","message":"Required query param is missing.","timestamp":"2025-06-09T04:20:41.090Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:20:41.094Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:20:41.097Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:20:41.100Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:20:41.103Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:20:41.106Z"}
+{"code":"406","error":"NOT_ACCEPTABLE","level":"error","message":"API only supports application/json responses.","timestamp":"2025-06-09T04:20:41.109Z"}
+{"code":"500","error":"MISC_SERVER_ERROR","errorDetail":{},"level":"error","message":"Some miscellaneous error has occurred.","timestamp":"2025-06-09T04:20:41.112Z"}
+{"code":"400","error":"MISSING_QUERY_PARAM","level":"error","message":"Required query param is missing.","timestamp":"2025-06-09T04:55:12.451Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:55:12.455Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:55:12.459Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:55:12.463Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:55:12.468Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:55:12.472Z"}
+{"code":"406","error":"NOT_ACCEPTABLE","level":"error","message":"API only supports application/json responses.","timestamp":"2025-06-09T04:55:12.476Z"}
+{"code":"500","error":"MISC_SERVER_ERROR","errorDetail":{},"level":"error","message":"Some miscellaneous error has occurred.","timestamp":"2025-06-09T04:55:12.484Z"}
+{"code":"400","error":"MISSING_QUERY_PARAM","level":"error","message":"Required query param is missing.","timestamp":"2025-06-09T04:56:58.095Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:56:58.100Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:56:58.103Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:56:58.109Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:56:58.113Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:56:58.117Z"}
+{"code":"406","error":"NOT_ACCEPTABLE","level":"error","message":"API only supports application/json responses.","timestamp":"2025-06-09T04:56:58.120Z"}
+{"code":"500","error":"MISC_SERVER_ERROR","errorDetail":{},"level":"error","message":"Some miscellaneous error has occurred.","timestamp":"2025-06-09T04:56:58.124Z"}
+{"code":"400","error":"MISSING_QUERY_PARAM","level":"error","message":"Required query param is missing.","timestamp":"2025-06-09T04:57:37.016Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:57:37.021Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:57:37.024Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:57:37.032Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:57:37.035Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T04:57:37.039Z"}
+{"code":"406","error":"NOT_ACCEPTABLE","level":"error","message":"API only supports application/json responses.","timestamp":"2025-06-09T04:57:37.042Z"}
+{"code":"500","error":"MISC_SERVER_ERROR","errorDetail":{},"level":"error","message":"Some miscellaneous error has occurred.","timestamp":"2025-06-09T04:57:37.046Z"}
+{"code":"400","error":"MISSING_QUERY_PARAM","level":"error","message":"Required query param is missing.","timestamp":"2025-06-09T05:00:13.645Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T05:00:13.649Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T05:00:13.653Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T05:00:13.656Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T05:00:13.660Z"}
+{"code":"400","error":"INVALID_QUERY_PARAM","level":"error","message":"Please provide a whole number between 1 and 3999.","timestamp":"2025-06-09T05:00:13.664Z"}
+{"code":"406","error":"NOT_ACCEPTABLE","level":"error","message":"API only supports application/json responses.","timestamp":"2025-06-09T05:00:13.667Z"}
+{"code":"500","error":"MISC_SERVER_ERROR","errorDetail":{},"level":"error","message":"Some miscellaneous error has occurred.","timestamp":"2025-06-09T05:00:13.671Z"}

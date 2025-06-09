@@ -7,7 +7,7 @@ A simple web application for converting numbers to Roman numerals.
 ### Clone the repository
 
 ```bash
-git clone <REPO_URL>
+git clone https://github.com/manasayedire/converter.git
 cd converter
 ```
 
@@ -27,6 +27,7 @@ docker-compose up --build
 ### Start the backend (webserver)
 
 ```bash
+cd packages
 cd webserver
 npm install
 npm start
@@ -39,10 +40,13 @@ The backend will run on [http://localhost:8080](http://localhost:8080)
 Open a new terminal and run:
 
 ```bash
+cd packages
 cd webui
 npm install
-npm run dev
+npm start
 ```
+
+## G
 
 The frontend will run on [http://localhost:3000](http://localhost:3000)
 
@@ -62,4 +66,18 @@ npm test
 
 - These tests cover key user flows and edge cases.
 - For more details and available scripts, see [`e2eTests/README.md`](./e2eTests/README.md).
+
+## Code Quality: Linting and Formatting
+
+This project uses [ESLint](https://eslint.org/) for code linting and [Prettier](https://prettier.io/) for code formatting across all packages (`webserver`, `webui`, and `e2eTests`).
+
+### Usage
+
+Run the following commands in the respective package directory (e.g., `cd packages/webui`, `cd packages/webserver`, or `cd packages/e2eTests`):
+
+- **`npm run format`** – Formats code with Prettier.
+- **`npm run eslint`** – Lints code with ESLint.
+- **`npm run eslint:fix`** – Lints and auto-fixes code with ESLint.
+
+> **Tip:** Run these commands before committing code to ensure consistent style and catch potential issues early.
 
