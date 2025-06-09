@@ -128,7 +128,12 @@ To run E2E tests:
 ```bash
 cd e2eTests
 npm install
+npx playwright install
+npx playwright install msedge
+
 npm test
+
+npx playwright show-report
 ```
 
 ## Code Quality
@@ -153,7 +158,7 @@ Requirement:
   * For the frontend, I used React along with Vite to get fast development and optimized builds. 
   * To make the UI polished and accessible, I added Adobe React Spectrum components. 
   * I also added react-intl to support multiple languages (right now, English and Spanish) to cater to a global audience.
-  * Added linting abnd prettier
+  * Added linting and prettier
 * Step 3: Backend Development
   * I built the backend using Node.js and Express, which allowed me to set up a robust REST API for handling conversion requests. This stack gave me a solid and fast server-side framework to handle everything efficiently.
 * Step 4: Backend and Frontend Integration

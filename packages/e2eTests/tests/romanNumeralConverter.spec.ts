@@ -28,6 +28,38 @@ test('test roman numeral converter for empty input', async ({ page }) => {
   await expect(page.getByText('Enter a number between 1 and 3999')).toBeVisible();
 });
 
+test('test roman numeral converter for empty input after one successful conversion', async ({ page }) => {
+  await expect(page.getByTestId('roman-numeral-converter-number')).toBeVisible();
+  await page.getByTestId('roman-numeral-converter-number').fill('8');
+  await page.getByTestId('roman-numeral-converter-button').click();
+  // Check if the roman numeral is displayed
+  await expect(page.getByTestId('roman-numeral-converter-roman-numeral')).toHaveText('Roman numeral is VIII');
+  await page.getByTestId('roman-numeral-converter-number').clear();
+  await expect(page.getByTestId('roman-numeral-converter-number')).toHaveValue('');
+  await page.getByTestId('roman-numeral-converter-button').click();
+  // Check if the input is invalid and the error message is visible
+  await expect(page.getByTestId('roman-numeral-converter-number')).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.getByText('Enter a number between 1 and 3999')).toBeVisible();
+  await expect(page.getByTestId('roman-numeral-converter-roman-numeral')).toHaveText('Roman numeral is -');
+});
+
+test('test roman numeral converter for invalid input to valid the input field', async ({ page }) => {
+  await expect(page.getByTestId('roman-numeral-converter-number')).toBeVisible();
+  await page.getByTestId('roman-numeral-converter-number').fill('');
+  await page.getByTestId('roman-numeral-converter-button').click();
+  // Check if the input is invalid and the error message is visible
+  await expect(page.getByTestId('roman-numeral-converter-number')).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.getByText('Enter a number between 1 and 3999')).toBeVisible();
+  await expect(page.getByTestId('roman-numeral-converter-roman-numeral')).toHaveText('Roman numeral is -');
+  await page.getByTestId('roman-numeral-converter-number').fill('10');
+  await page.getByTestId('roman-numeral-converter-button').click();
+  // check if the input is valid
+  await expect(page.getByTestId('roman-numeral-converter-number')).not.toHaveAttribute('aria-invalid');
+  await expect(page.getByText('Enter a number between 1 and 3999')).not.toBeVisible();
+  // Check if the roman numeral is displayed
+  await expect(page.getByTestId('roman-numeral-converter-roman-numeral')).toHaveText('Roman numeral is X');
+});
+
 test('test roman numeral converter for number 10 - success', async ({ page }) => {
   await expect(page.getByTestId('roman-numeral-converter-number')).toBeVisible();
   await page.getByTestId('roman-numeral-converter-number').fill('10');
@@ -36,6 +68,21 @@ test('test roman numeral converter for number 10 - success', async ({ page }) =>
   await expect(page.getByTestId('roman-numeral-converter-roman-numeral')).toHaveText('Roman numeral is X');
 });
 
+test('test roman numeral converter for number 1 - success', async ({ page }) => {
+  await expect(page.getByTestId('roman-numeral-converter-number')).toBeVisible();
+  await page.getByTestId('roman-numeral-converter-number').fill('1');
+  await page.getByTestId('roman-numeral-converter-button').click();
+  // Check if the roman numeral is displayed
+  await expect(page.getByTestId('roman-numeral-converter-roman-numeral')).toHaveText('Roman numeral is I');
+});
+
+test('test roman numeral converter for number 3999 - success', async ({ page }) => {
+  await expect(page.getByTestId('roman-numeral-converter-number')).toBeVisible();
+  await page.getByTestId('roman-numeral-converter-number').fill('3999');
+  await page.getByTestId('roman-numeral-converter-button').click();
+  // Check if the roman numeral is displayed
+  await expect(page.getByTestId('roman-numeral-converter-roman-numeral')).toHaveText('Roman numeral is MMMCMXCIX');
+});
 test('test roman numeral converter for 4000', async ({ page }) => {
   await expect(page.getByTestId('roman-numeral-converter-number')).toBeVisible();
   await page.getByTestId('roman-numeral-converter-number').fill('4000');
@@ -45,6 +92,46 @@ test('test roman numeral converter for 4000', async ({ page }) => {
   await expect(page.getByText('Enter a number between 1 and 3999')).toBeVisible();
 });
 
+test('test roman numeral converter for number 100 with trailing space', async ({ page }) => {
+  await expect(page.getByTestId('roman-numeral-converter-number')).toBeVisible();
+  await page.getByTestId('roman-numeral-converter-number').fill('   100');
+  await page.getByTestId('roman-numeral-converter-button').click();
+  // Check if the input is valid and the roman numeral is displayed
+  await expect(page.getByTestId('roman-numeral-converter-number')).toHaveValue('100');
+  await expect(page.getByTestId('roman-numeral-converter-roman-numeral')).toHaveText('Roman numeral is C');
+});
+
+test('test roman numeral converter for number 200 with leading zeros', async ({ page }) => {
+  await expect(page.getByTestId('roman-numeral-converter-number')).toBeVisible();
+  await page.getByTestId('roman-numeral-converter-number').fill('000200');
+  await page.getByTestId('roman-numeral-converter-button').click();
+  // Check if the input is valid and the roman numeral is displayed
+  await expect(page.getByTestId('roman-numeral-converter-number')).toHaveValue('200');
+  await expect(page.getByTestId('roman-numeral-converter-roman-numeral')).toHaveText('Roman numeral is CC');
+});
+
+test('test roman numeral converter for non numeric input character', async ({ page }) => {
+  await expect(page.getByTestId('roman-numeral-converter-number')).toBeVisible();
+  await page.getByTestId('roman-numeral-converter-number').fill('a');
+  await expect(page.getByTestId('roman-numeral-converter-number')).toHaveValue('');
+  await page.getByTestId('roman-numeral-converter-button').click();
+  // Check if the input is invalid and the error message is visible
+  await expect(page.getByTestId('roman-numeral-converter-number')).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.getByText('Enter a number between 1 and 3999')).toBeVisible();
+  await expect(page.getByTestId('roman-numeral-converter-roman-numeral')).toHaveText('Roman numeral is -');
+});
+
+test('test roman numeral converter for non numeric input special character', async ({ page }) => {
+  await expect(page.getByTestId('roman-numeral-converter-number')).toBeVisible();
+  await page.getByTestId('roman-numeral-converter-number').fill('@@');
+  await expect(page.getByTestId('roman-numeral-converter-number')).toHaveValue('');
+  await page.getByTestId('roman-numeral-converter-button').click();
+  // Check if the input is invalid and the error message is visible
+  await expect(page.getByTestId('roman-numeral-converter-number')).toHaveAttribute('aria-invalid', 'true');
+  await expect(page.getByText('Enter a number between 1 and 3999')).toBeVisible();
+  await expect(page.getByTestId('roman-numeral-converter-roman-numeral')).toHaveText('Roman numeral is -');
+});
+
 test('test roman numeral converter for 0', async ({ page }) => {
   await expect(page.getByTestId('roman-numeral-converter-number')).toBeVisible();
   await page.getByTestId('roman-numeral-converter-number').fill('0');
@@ -52,6 +139,7 @@ test('test roman numeral converter for 0', async ({ page }) => {
   // Check if the input is invalid and the error message is visible
   await expect(page.getByTestId('roman-numeral-converter-number')).toHaveAttribute('aria-invalid', 'true');
   await expect(page.getByText('Enter a number between 1 and 3999')).toBeVisible();
+  await expect(page.getByTestId('roman-numeral-converter-roman-numeral')).toHaveText('Roman numeral is -');
 });
 
 test('test roman numeral converter for decimal number', async ({ page }) => {
@@ -61,6 +149,18 @@ test('test roman numeral converter for decimal number', async ({ page }) => {
   // Check if the input is invalid and the error message is visible
   await expect(page.getByTestId('roman-numeral-converter-number')).toHaveAttribute('aria-invalid', 'true');
   await expect(page.getByText('Enter a number between 1 and 3999')).toBeVisible();
+});
+
+test('test roman numeral converter for browser refresh button', async ({ page }) => {
+  await expect(page.getByTestId('roman-numeral-converter-number')).toBeVisible();
+  await page.getByTestId('roman-numeral-converter-number').fill('10');
+  await page.getByTestId('roman-numeral-converter-button').click();
+  // Check if the roman numeral is displayed
+  await expect(page.getByTestId('roman-numeral-converter-roman-numeral')).toHaveText('Roman numeral is X');
+  await page.reload();
+  await expect(page.getByTestId('roman-numeral-converter-number')).toBeVisible();
+  await expect(page.getByTestId('roman-numeral-converter-number')).toHaveValue('');
+  await expect(page.getByTestId('roman-numeral-converter-roman-numeral')).toHaveText('Roman numeral is -');
 });
 
 test('test roman numeral converter for backend error 500', async ({ page }) => {

@@ -23,7 +23,6 @@ npm start
 
 The server will be available at [http://localhost:8080](http://localhost:8080) by default.
 
-
 ## Technologies Used
 
 - **Node.js** – JavaScript runtime for building scalable server-side applications

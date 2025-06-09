@@ -8,10 +8,10 @@ describe('httpCounterMiddleware', () => {
   let next: jest.Mock;
 
   beforeEach(() => {
-    req = { method: 'POST', url: '/api/test', originalUrl: '/api/test' };
+    req = { method: 'GET', url: '/api/test', originalUrl: '/api/test' };
     res = {
-      statusCode: 201,
-      statusMessage: 'Created',
+      statusCode: 200,
+      statusMessage: 'Fetched',
       on: jest.fn((event, cb) => {
         if (event === 'finish') cb();
         return res as Response;
@@ -24,17 +24,29 @@ describe('httpCounterMiddleware', () => {
 
   it('should increment requestCounter with method and endpoint', () => {
     httpCounterMiddleware(req as Request, res as Response, next as NextFunction);
-    expect(requestCounter.inc).toHaveBeenCalledWith({ method: 'POST', endpoint: '/api/test' });
+    expect(requestCounter.inc).toHaveBeenCalledWith({ method: 'GET', endpoint: '/api/test' });
   });
 
   it('should increment responseCounter with method, endpoint, status_code, and status_message on finish', () => {
     httpCounterMiddleware(req as Request, res as Response, next as NextFunction);
     expect(res.on).toHaveBeenCalledWith('finish', expect.any(Function));
     expect(responseCounter.inc).toHaveBeenCalledWith({
-      method: 'POST',
+      method: 'GET',
       endpoint: '/api/test',
-      status_code: 201,
-      status_message: 'Created',
+      status_code: 200,
+      status_message: 'Fetched',
+    });
+  });
+
+  it('should increment responseCounter with empty status_message if statusMessage is undefined', () => {
+    res.statusMessage = undefined;
+    httpCounterMiddleware(req as Request, res as Response, next as NextFunction);
+    expect(res.on).toHaveBeenCalledWith('finish', expect.any(Function));
+    expect(responseCounter.inc).toHaveBeenCalledWith({
+      method: 'GET',
+      endpoint: '/api/test',
+      status_code: 200,
+      status_message: '',
     });
   });
 

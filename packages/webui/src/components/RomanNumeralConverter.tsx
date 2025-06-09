@@ -24,6 +24,8 @@ function RomanNumeralConveter() {
     // Check if the number is valid input
     if (number === undefined || number < 1 || number > 3999 || number % 1 !== 0) {
       setError(true);
+      // clear the roman numeral
+      setRomanNumeral('');
       return;
     }
     setError(false);
