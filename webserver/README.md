@@ -1,46 +1,53 @@
-# Getting Started with Create React App
+# Roman Numeral Converter Server
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the backend (server) for the Roman Numeral Converter App. It provides an API to convert numbers to Roman numerals.
 
-## Available Scripts
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (version 18 recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+
+## Installation
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+## Running the Server
+
+```bash
+npm start
+```
+
+The server will be available at [http://localhost:8080](http://localhost:8080) by default.
+
+## Usage
+
+- Send a request to the backend API with a number to receive its Roman numeral representation.
+- The server will respond with the converted value.
+
+---
+
+### Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+- **`npm start`** – Starts the backend server (default: http://localhost:8080).
+- **`npm test`** – Runs tests.
+- **`npm run test:watch`** – Runs Jest in watch mode.
+- **`npm run test:coverage`** – Generates a code coverage report.
+- **`npm run format`** – Formats code with Prettier.
+- **`npm run eslint`** – Lints code with ESLint.
+- **`npm run eslint:fix`** – Lints and auto-fixes code with ESLint.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Logging with Winston
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This server uses [Winston](https://github.com/winstonjs/winston) for logging. Logs are output to the console, to a file for errors, and to daily rotating log files. Log files are stored in the `logs/` directory. Winston provides structured logging with timestamps and supports different log levels (e.g., info, error).
 
-### `npm test`
+## Metrics with Prometheus (prom-client)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The server exposes application metrics using [prom-client](https://github.com/siimon/prom-client), which allows Prometheus to scrape metrics for monitoring. Default and custom metrics (such as HTTP request and response counters) are collected. The `/metrics` endpoint is available for Prometheus to scrape these metrics. Metrics include request counts, response counts, and standard Node.js process metrics, all prefixed with `converter_`.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

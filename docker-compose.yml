@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  backend:
+  webserver:
     build:
       context: .
       dockerfile: ./webserver/backend.Dockerfile
@@ -9,11 +9,11 @@ services:
     volumes:
       - ./webserver/logs:/app/logs
 
-  frontend:
+  webui:
     build:
       context: .
       dockerfile: ./webui/frontend.Dockerfile
     ports:
       - "3000:80"
     depends_on:
-      - backend 
+      - webserver 

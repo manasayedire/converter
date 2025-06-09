@@ -44,7 +44,7 @@ function RomanNumeralConveter() {
 
   return (
     <Flex direction="column" justifyContent="center" alignItems="center">
-      <Flex direction="column" margin="size-200" width="332px">
+      <Flex direction="column" margin="size-200">
         <Heading data-testid="roman-numeral-converter-heading" level={2}>
           {formatMessage.format('heading')}
         </Heading>
@@ -52,7 +52,6 @@ function RomanNumeralConveter() {
         <NumberField
           data-testid="roman-numeral-converter-number"
           marginY="size-200"
-          maxWidth="size-7000"
           height="size-400"
           label={formatMessage.format('input.label')}
           labelPosition="side"

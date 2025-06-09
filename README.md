@@ -1,46 +1,65 @@
-# Getting Started with Create React App
+# Roman Numeral Converter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple web application for converting numbers to Roman numerals.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+### Clone the repository
 
-### `npm start`
+```bash
+git clone <REPO_URL>
+cd converter
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Running with Docker
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+You can run both the webserver (backend) and webui (frontend) using Docker Compose:
 
-### `npm test`
+```bash
+docker-compose up --build
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- The webserver will be available at [http://localhost:8080](http://localhost:8080)
+- The webui will be available at [http://localhost:3000](http://localhost:3000)
 
-### `npm run build`
+## Running Locally (without Docker)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Start the backend (webserver)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+cd webserver
+npm install
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The backend will run on [http://localhost:8080](http://localhost:8080)
 
-### `npm run eject`
+### Start the frontend (webui)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Open a new terminal and run:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+cd webui
+npm install
+npm run dev
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The frontend will run on [http://localhost:3000](http://localhost:3000)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## End-to-End Testing with Playwright
 
-## Learn More
+End-to-end (E2E) tests for this project are implemented using [Playwright](https://playwright.dev/). Playwright automates browser interactions to verify that the Roman Numeral Converter App works as expected from the user's perspective.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Running E2E Tests
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The E2E tests are located in the [`e2eTests/`](./e2eTests/) directory. To run them:
+
+```bash
+cd e2eTests
+npm install
+npm test
+```
+
+- These tests cover key user flows and edge cases.
+- For more details and available scripts, see [`e2eTests/README.md`](./e2eTests/README.md).
+

@@ -52,4 +52,4 @@ function setupMetricsEndpoint(app: Application) {
   });
 }
 
-export { setupMetricsEndpoint, httpCounterMiddleware };
+export { setupMetricsEndpoint, httpCounterMiddleware, requestCounter, responseCounter };
