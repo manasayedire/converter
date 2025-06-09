@@ -1,18 +1,18 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-webserver/node_modules
-webui/node_modules
+packages/webserver/node_modules
+packages/webui/node_modules
 
 # build
-webserver/dist
-webui/build
+packages/webserver/dist
+packages/webui/build
 
 # test coverage
-webserver/coverage
+packages/webserver/coverage
 
 #logs
-webserver/logs
+packages/webserver/logs
 
 # misc
 .DS_Store
@@ -20,8 +20,8 @@ webserver/logs
 
 #playwright
 # Playwright
-e2eTests/node_modules/
-e2eTests/test-results/
-e2eTests/playwright-report/
-e2eTests/blob-report/
-e2eTests/playwright/.cache/
+packages/e2eTests/node_modules/
+packages/e2eTests/test-results/
+packages/e2eTests/playwright-report/
+packages/e2eTests/blob-report/
+packages/e2eTests/playwright/.cache/
