@@ -86,24 +86,6 @@ describe('RomanNumeralConveter', () => {
     expect(screen.getByText('Enter a number between 1 and 3999')).toBeInTheDocument();
   });
 
-  it('clears roman numeral field and shows error for invalid input (out of range)', async () => {
-    makeComponent();
-    const input = screen.getByTestId('roman-numeral-converter-number');
-    await userEvent.type(input, '10');
-    await userEvent.click(screen.getByTestId('roman-numeral-converter-button'));
-    // check if the roman numeral is displayed
-    await waitFor(() =>
-      expect(screen.getByTestId('roman-numeral-converter-roman-numeral')).toHaveTextContent('Roman numeral is -'),
-    );
-    // check if the input is cleared
-    expect(screen.getByTestId('roman-numeral-converter-roman-numeral')).toHaveValue('');
-    //show error for invalid input 0
-    await userEvent.type(input, '0');
-    await userEvent.click(screen.getByTestId('roman-numeral-converter-button'));
-    expect(screen.getByTestId('roman-numeral-converter-number')).toHaveAttribute('aria-invalid', 'true');
-    expect(screen.getByText('Enter a number between 1 and 3999')).toBeInTheDocument();
-  });
-
   it('converts number to roman numeral on valid input', async () => {
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
