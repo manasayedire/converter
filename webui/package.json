@@ -16,8 +16,7 @@
   "dependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-intl": "^7.1.11",
-    "web-vitals": "5.0.2"
+    "react-intl": "^7.1.11"
   },
   "devDependencies": {
     "@adobe/react-spectrum": "^3.42.1",
@@ -38,7 +37,8 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.33.1",
     "vite": "^6.3.5",
-    "vitest": "^3.2.2"
+    "vitest": "^3.2.2",
+    "web-vitals": "^5.0.2"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [

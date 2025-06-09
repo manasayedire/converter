@@ -1,14 +1,17 @@
-import { ReportHandler } from 'web-vitals';
+// src/reportWebVitals.ts
+import { onCLS, onINP, onLCP } from 'web-vitals';
 
-const reportWebVitals = (onPerfEntry?: ReportHandler) => {
+/*
+ * Report web vitals
+ * @see https://web.dev/vitals/
+ * LCP - Largest Contentful Paint
+ * @param onPerfEntry - The function to call with the web vitals data
+ */
+const reportWebVitals = (onPerfEntry?: any) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
-    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(onPerfEntry);
-      getFID(onPerfEntry);
-      getFCP(onPerfEntry);
-      getLCP(onPerfEntry);
-      getTTFB(onPerfEntry);
-    });
+    onLCP(onPerfEntry);
+    onINP(onPerfEntry);
+    onCLS(onPerfEntry);
   }
 };
 
