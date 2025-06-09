@@ -1,5 +1,5 @@
-import { httpCounterMiddleware, setupMetricsEndpoint, requestCounter, responseCounter } from './metrics';
-import express, { Request, Response, NextFunction } from 'express';
+import { setupMetricsEndpoint } from './metrics';
+import express from 'express';
 import request from 'supertest';
 
 // Mock prom-client
@@ -25,38 +25,6 @@ jest.mock('prom-client', () => {
 describe('metrics utils', () => {
   afterEach(() => {
     jest.clearAllMocks();
-  });
-
-  /*
-   * Unit Test cases for httpCounterMiddleware
-   */
-  describe('httpCounterMiddleware', () => {
-    it('should increment request and response counters', () => {
-      const req = { method: 'GET', url: '/test', originalUrl: '/test' } as Request;
-      const res = {
-        statusCode: 200,
-        statusMessage: 'OK',
-        on: jest.fn((event, cb) => {
-          if (event === 'finish') cb();
-        }),
-      } as unknown as Response;
-      const next = jest.fn() as NextFunction;
-
-      httpCounterMiddleware(req, res, next);
-
-      // Check that requestCounter.inc was called
-      expect(requestCounter.inc).toHaveBeenCalledWith({ method: 'GET', endpoint: '/test' });
-
-      // Check that responseCounter.inc was called
-      expect(responseCounter.inc).toHaveBeenCalledWith({
-        method: 'GET',
-        endpoint: '/test',
-        status_code: 200,
-        status_message: 'OK',
-      });
-
-      expect(next).toHaveBeenCalled();
-    });
   });
 
   /*

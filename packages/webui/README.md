@@ -1,6 +1,6 @@
 # Roman Numeral Converter Frontend
 
-This is the frontend (web UI) for the Roman Numeral Converter App. It provides a user interface to convert numbers to Roman numerals using the backend API.
+Provides a user interface to convert numbers to Roman numerals using the backend API.
 
 ## Prerequisites
 
@@ -23,10 +23,29 @@ npm start
 
 The frontend will be available at [http://localhost:3000](http://localhost:3000) by default.
 
-## Usage
+---
 
-- Enter a number in the input field to receive its Roman numeral representation.
-- The frontend communicates with the backend API to perform the conversion.
+## Technologies Used
+
+- **React**: UI library for building user interfaces
+- **TypeScript**: Typed superset of JavaScript
+- **Vite**: Fast frontend build tool
+- **Adobe React Spectrum**: Accessible, adaptive, and themeable React component library
+- **React Intl**: Internationalization for React
+- **Vitest**: Unit testing framework
+- **Testing Library**: Utilities for testing UI components
+- **web-vitals**: Web performance metrics
+
+---
+
+## Localization
+
+If you are adding or updating user-facing text, make sure to add the corresponding string to both the `en-us.json` and `es-ES.json` localization files. This ensures the app supports both English and Spanish languages consistently.
+
+- Add new keys and values to `en-us.json` for English.
+- Add the same keys with appropriate translations to `es-ES.json` for Spanish.
+- Supports English and Spanish.
+- Translation files are located in `packages/webui/src/translations/`.
 
 ---
 
@@ -62,3 +81,25 @@ In the project directory, you can run:
 - **`npm run format`** – Formats code with Prettier.
 - **`npm run eslint`** – Lints code with ESLint.
 - **`npm run eslint:fix`** – Lints and auto-fixes code with ESLint.
+
+---
+
+## Dependencies
+
+### Runtime dependencies
+
+- **`react`**, **`react-dom`** – Core React libraries for building user interfaces and DOM rendering
+- **`react-intl`** – Internationalization for React applications
+
+### Development dependencies
+
+- **`@adobe/react-spectrum`** – Adobe's accessible and adaptive React component library
+- **`@eslint/js`**, **`eslint`** – JavaScript linter and core rules
+- **`prettier`** – Opinionated code formatter
+- **`typescript`**, **`typescript-eslint`** – TypeScript language, compiler, and ESLint integration
+- **`vite`**, **`@vitejs/plugin-react`** – Next-generation frontend tooling and React plugin
+- **`vitest`** – Fast unit testing framework
+- **`jsdom`** – JavaScript implementation of the DOM and HTML standards
+- **`web-vitals`** – Measures web performance metrics
+- **`@testing-library/dom`**, **`@testing-library/jest-dom`**, **`@testing-library/react`**, **`@testing-library/user-event`** – Utilities for testing React components and simulating user interactions
+- **`@types/jest`**, **`@types/node`**, **`@types/react`**, **`@types/react-dom`** – TypeScript type definitions for Jest, Node.js, React, and React DOM

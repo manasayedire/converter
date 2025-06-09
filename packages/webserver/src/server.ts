@@ -1,7 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import romanNumeralRoutes from './routes/romanNumeralRoutes';
-import { setupMetricsEndpoint, httpCounterMiddleware } from './utils/metrics';
+import { setupMetricsEndpoint } from './utils/metrics';
+import httpCounterMiddleware from './middleware/httpCounterMiddleware';
 import dotenv from 'dotenv';
 
 // Create express app
