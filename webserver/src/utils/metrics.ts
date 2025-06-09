@@ -14,7 +14,7 @@ client.collectDefaultMetrics({
 const requestCounter = new client.Counter({
   name: 'http_requests_total',
   help: 'Total number of HTTP requests',
-  labelNames: ['method', 'endpoint', 'status_code', 'status_message']
+  labelNames: ['method', 'endpoint', 'status_code', 'status_message'],
 });
 register.registerMetric(requestCounter);
 
@@ -22,7 +22,7 @@ register.registerMetric(requestCounter);
 const responseCounter = new client.Counter({
   name: 'http_responses_total',
   help: 'Total number of HTTP responses',
-  labelNames: ['method', 'endpoint', 'status_code', 'status_message']
+  labelNames: ['method', 'endpoint', 'status_code', 'status_message'],
 });
 register.registerMetric(responseCounter);
 
@@ -33,7 +33,7 @@ function httpCounterMiddleware(req: Request, res: Response, next: NextFunction) 
       method: req.method,
       endpoint: req.originalUrl,
       status_code: res.statusCode,
-      status_message: res.statusMessage || ''
+      status_message: res.statusMessage || '',
     });
   });
   requestCounter.inc({ method: req.method, endpoint: req.url });

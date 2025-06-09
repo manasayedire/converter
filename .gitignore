@@ -4,6 +4,10 @@
 webserver/node_modules
 webui/node_modules
 
+# build
+webserver/dist
+webui/build
+
 # test coverage
 webserver/coverage
 

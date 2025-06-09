@@ -8,7 +8,6 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "eject": "react-scripts eject",
     "format": "prettier --write .",
     "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "eslint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
@@ -32,19 +31,12 @@
     "@vitejs/plugin-react": "^4.5.1",
     "eslint": "^9.28.0",
     "jsdom": "^26.1.0",
-    "lint-staged": "^16.1.0",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.33.1",
     "vite": "^6.3.5",
     "vitest": "^3.2.2",
     "web-vitals": "^5.0.2"
-  },
-  "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "prettier --write --ignore-unknown",
-      "eslint"
-    ]
   },
   "browserslist": {
     "production": [

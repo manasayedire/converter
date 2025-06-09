@@ -1,12 +1,12 @@
+// Mock convertToRoman function before any imports
+const convertToRomanMock = jest.fn(() => 'X');
+jest.mock('../utils/helpers', () => ({
+  convertToRoman: convertToRomanMock,
+}));
+
 import request from 'supertest';
 import express from 'express';
 import romanNumeralRoutes from '../routes/romanNumeralRoutes';
-import { convertToRoman } from '../utils/helpers';
-
-// Mock convertToRoman function
-jest.mock('../utils/helpers', () => ({
-  convertToRoman: jest.fn(() => 'X'),
-}));
 
 /*
  * Unit Test cases for romanNumeralController
@@ -29,6 +29,7 @@ describe('GET /romannumeral', () => {
 
   it('should return roman numeral for valid input', async () => {
     const res = await request(app).get('/romannumeral?query=10').set('Accept', 'application/json');
+    expect(convertToRomanMock).toHaveBeenCalledWith(10);
     expect(res.statusCode).toBe(200);
     expect(res.body).toEqual({ input: '10', output: 'X' });
   });
@@ -76,8 +77,7 @@ describe('GET /romannumeral', () => {
   });
 
   it('should return 500 for MISC_SERVER_ERROR if convertToRoman throws an error', async () => {
-    // Mock convertToRoman function to throw an error
-    (convertToRoman as jest.Mock).mockImplementationOnce(() => {
+    convertToRomanMock.mockImplementationOnce(() => {
       throw new Error('fail');
     });
     const res = await request(app).get('/romannumeral?query=10');

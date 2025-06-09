@@ -1,6 +1,5 @@
 import { createLogger, format, transports } from 'winston';
 import DailyRotateFile from 'winston-daily-rotate-file';
-
 /*
  * Winston logger for the roman numeral converter
  * @param level - The log level

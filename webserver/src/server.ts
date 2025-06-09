@@ -2,18 +2,23 @@ import express from 'express';
 import cors from 'cors';
 import romanNumeralRoutes from './routes/romanNumeralRoutes';
 import { setupMetricsEndpoint, httpCounterMiddleware } from './utils/metrics';
+import dotenv from 'dotenv';
+
+// Create express app
 const app = express();
 
-// Allow requests only from 3000 port
+// Load environment variables from .env file
+dotenv.config();
+
+// Allow requests only from frontend origin
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: process.env.FRONTEND_ORIGIN,
 };
 
 // Use http counter middleware
 app.use(httpCounterMiddleware);
 // Setup /metrics endpoint
 setupMetricsEndpoint(app);
-
 
 // Apply CORS only to /romannumeral route
 app.use('/romannumeral', cors(corsOptions), romanNumeralRoutes);

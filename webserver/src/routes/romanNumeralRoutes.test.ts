@@ -1,12 +1,12 @@
+// Mock the romanNumeralController before any imports
+const romanNumeralControllerMock = jest.fn((_req, res) => res.status(200).json({ mocked: true }));
+jest.mock('../controllers/romanNumeralController', () => ({
+  getRomanNumeral: romanNumeralControllerMock,
+}));
+
 import express from 'express';
-import romanNumeralController from '../controllers/romanNumeralController';
 import romanNumeralRoutes from './romanNumeralRoutes';
 import request from 'supertest';
-
-// Mock romanNumeralController
-jest.mock('../controllers/romanNumeralController', () => ({
-  getRomanNumeral: jest.fn((req, res) => res.status(200).json({ mocked: true })),
-}));
 
 /*
  * Unit Test cases for romanNumeralRoutes
@@ -28,7 +28,7 @@ describe('romanNumeralRoutes', () => {
   it('should call the controller when GET /romannumeral is hit', async () => {
     await request(app).get('/romannumeral?query=1').set('Accept', 'application/json');
     // Check if the controller is called
-    expect(romanNumeralController.getRomanNumeral).toHaveBeenCalled();
+    expect(romanNumeralControllerMock).toHaveBeenCalled();
   });
 
   it('should not allow POST method', async () => {

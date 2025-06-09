@@ -1,5 +1,5 @@
 // src/reportWebVitals.ts
-import { onCLS, onINP, onLCP } from 'web-vitals';
+import { Metric, onCLS, onINP, onLCP } from 'web-vitals';
 
 /*
  * Report web vitals
@@ -7,7 +7,7 @@ import { onCLS, onINP, onLCP } from 'web-vitals';
  * LCP - Largest Contentful Paint
  * @param onPerfEntry - The function to call with the web vitals data
  */
-const reportWebVitals = (onPerfEntry?: any) => {
+const reportWebVitals = (onPerfEntry?: (metric: Metric) => void) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
     onLCP(onPerfEntry);
     onINP(onPerfEntry);
