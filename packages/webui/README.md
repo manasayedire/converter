@@ -23,9 +23,7 @@ npm start
 
 The frontend will be available at [http://localhost:3000](http://localhost:3000) by default.
 
----
-
-## Technologies Used
+### Technologies Used
 
 - **React**: UI library for building user interfaces
 - **TypeScript**: Typed superset of JavaScript
@@ -36,8 +34,6 @@ The frontend will be available at [http://localhost:3000](http://localhost:3000)
 - **Testing Library**: Utilities for testing UI components
 - **web-vitals**: Web performance metrics
 
----
-
 ## Localization
 
 If you are adding or updating user-facing text, make sure to add the corresponding string to both the `en-us.json` and `es-ES.json` localization files. This ensures the app supports both English and Spanish languages consistently.
@@ -47,9 +43,7 @@ If you are adding or updating user-facing text, make sure to add the correspondi
 - Supports English and Spanish.
 - Translation files are located in `packages/webui/src/translations/`.
 
----
-
-### Web Vitals
+## Web Vitals
 
 This project measures [Web Vitals](https://web.dev/vitals/) (such as Largest Contentful Paint, Cumulative Layout Shift, and Interaction to Next Paint) using the [`web-vitals`](https://www.npmjs.com/package/web-vitals) library.
 
@@ -58,18 +52,14 @@ This project measures [Web Vitals](https://web.dev/vitals/) (such as Largest Con
 **Reference:**  
 See [`src/reportWebVitals.ts`](./src/reportWebVitals.ts) and [`src/index.tsx`](./src/index.tsx) for implementation details.
 
----
-
-### Adobe React Spectrum
+## Adobe React Spectrum
 
 This project uses [Adobe React Spectrum](https://react-spectrum.adobe.com/) as its primary UI component library. React Spectrum provides accessible, adaptive, and themeable React components that ensure a consistent and high-quality user experience.
 
 **Reference:**  
 See usage in [`src/App.tsx`](./src/App.tsx) and [`src/components/`](./src/components/) for implementation details.
 
----
-
-### Available Scripts
+## Available Scripts
 
 In the project directory, you can run:
 
@@ -81,8 +71,6 @@ In the project directory, you can run:
 - **`npm run format`** – Formats code with Prettier.
 - **`npm run eslint`** – Lints code with ESLint.
 - **`npm run eslint:fix`** – Lints and auto-fixes code with ESLint.
-
----
 
 ## Dependencies
 

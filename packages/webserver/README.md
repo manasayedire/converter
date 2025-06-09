@@ -23,7 +23,6 @@ npm start
 
 The server will be available at [http://localhost:8080](http://localhost:8080) by default.
 
----
 
 ## Technologies Used
 
@@ -34,19 +33,15 @@ The server will be available at [http://localhost:8080](http://localhost:8080) b
 - **TypeScript** – Typed superset of JavaScript for safer, scalable code
 - **Jest** – Testing framework for unit and integration tests
 
----
-
-## Logging with Winston
+### Logging with Winston
 
 This server uses [Winston](https://github.com/winstonjs/winston) for logging. Logs are output to the console, to a file for errors, and to daily rotating log files. Log files are stored in the `logs/` directory. Winston provides structured logging with timestamps and supports different log levels (e.g., info, error).
 
-## Default Metrics and Custom Metrics with Prometheus (prom-client)
+### Default Metrics and Custom Metrics with Prometheus (prom-client)
 
 The server exposes application metrics using [prom-client](https://github.com/siimon/prom-client), which allows Prometheus to scrape metrics for monitoring. Default and **`custom metrics (such as HTTP request and response counters)`** are collected. The `/metrics` endpoint is available for Prometheus to scrape these metrics. Metrics include request counts, response counts, and standard Node.js process metrics, all prefixed with `converter_`.
 
----
-
-### Available Scripts
+## Available Scripts
 
 In the project directory, you can run:
 

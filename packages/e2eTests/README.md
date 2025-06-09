@@ -25,8 +25,6 @@ Run all end-to-end tests:
 npm test
 ```
 
----
-
 ## Technologies Used
 
 - **Playwright** – For end-to-end browser automation and testing.
@@ -34,9 +32,7 @@ npm test
 - **TypeScript** – (If used) Adds static typing to JavaScript.
 - **dotenv** – Loads environment variables from .env files.
 
----
-
-### Available Scripts
+## Available Scripts
 
 - **`npm test`** – Runs all Playwright end-to-end tests.
 - **`npm run test:watch`** – Runs tests in watch mode (if configured).
