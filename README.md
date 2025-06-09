@@ -51,7 +51,8 @@ converter/
 │   │   │   ├── hooks/
 │   │   │   ├── assests/
 │   │   │   └── translations/
-│   │   ├── package.json
+│   │   ├── Dockerfile 
+│   |   ├── package.json│  
 │   │   └── ...
 │   ├── webserver/       # Backend Node/Express server
 │   │   ├── src/
@@ -60,6 +61,7 @@ converter/
 │   │   │   ├── routes/
 │   │   │   ├── types/
 │   │   │   └── utils/
+│   │   ├── Dockerfile 
 │   │   ├── package.json
 │   │   └── ...
 │   └── e2eTests/        # End-to-end Playwright tests
