@@ -88,7 +88,6 @@ You can run both the webserver (backend) and webui (frontend) using Docker Compo
 ```bash
 docker-compose up --build
 
-docker-compose exec webui npm test
 docker-compose exec webserver npm test
 ```
 
